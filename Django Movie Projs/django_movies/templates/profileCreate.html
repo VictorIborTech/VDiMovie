@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Create_Profile
+{% endblock title %}
+{% block others %}
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+{% endblock others %}
+
+{% block content %}
+
+{% include "partials/navbar.html" %}
+
+
+<header class="min-h-screen w-full bg-black bg-opacity-75 showcase border-gray-600 border-b-8 flex justify-center py-20 bg-no-repeat bg-cover"  style="background-image:url('{% static 'istockphoto-1461469389-170667a.webp' %}'); background-position: center; background-size: cover;">
+    <div class="z-10 h-full py-40 md:py-0 text-gray-100 w-6/12  flex items-center flex-col">
+        <form method="POST" class="w-full md:w-8/12 bg-gray-900 p-5 rounded-lg">
+
+            {% csrf_token %}
+        
+            <h1 class="text-4xl text-center text-gray-100 font-medium">
+                Create A Profile
+            </h1>
+            <div class="my-4"> 
+                <Label class='text-lg text-gray-200 font-medium mb-3'>
+                    Profile Name
+                </Label>
+                <input required class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full" type="text" name="name" id="id_name" placeholder="Profile name">
+            </div>
+            <div class="my-4"> 
+                <Label class='text-lg text-gray-200 font-medium mb-3'>
+                    Maturity Level
+                </Label>
+                <select class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full"  name="age_limit" id="id_age_limit" >
+                    <option value="All">All</option>
+                    <option value="Kids">Kids</option>
+                   
+                </select>
+            </div>
+            <div class="flex justify-center items-center">
+                <button class="px-4 py-2 rounded-md outline-none bg-primary_red text-gray-100" style="background-color: goldenrod;" >Create Profile</button>
+            </div>
+        </form> 
+    </div>
+</header>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+

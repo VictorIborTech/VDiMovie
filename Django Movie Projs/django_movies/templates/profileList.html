@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   Profile
+{% endblock title %}
+{% block others %}
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+{% endblock others %}
+
+{% block content %}
+
+{% include "partials/navbar.html" %}
+
+
+<section class='bg-primary_black min-h-screen py-20 md:py-0 flex-col flex justify-center items-center' style="background-position: center; background-size: cover;background-image: url('{% static 'istockphoto-1402996545-612x612.jpg' %}')";>
+    <h2 class="text-center font-medium text-5xl my-4 text-gray-100">
+        Who's watching ?
+    </h2>
+
+    <div class="flex flex-wrap justify-center items-center w-10/12  md:w-6/12">
+        {% for profile in profiles %}
+            <a href="{% url 'core:movies_list' profile_id=profile.uuid %}">
+                <div class="w-32 h-32 m-4 flex flex-col justify-center align-center text-center rounded-md cursor-pointer" style="background-color: goldenrod;">
+                    <p class="text-6xl">
+                        {{ profile.name | slice:'1' }}
+                    </p>
+                    <p class="text-lg">
+                        {{ profile.name}}
+                    </p>
+                </div>
+            </a>
+        {% endfor %}
+
+    </div>
+    <div class="flex justify-center items-center">
+        <a href="{% url 'core:profile_create' %}">
+            <button class="px-4 py-2 rounded-md outline-none text-gray-100" style="background-color: whitesmoke; color: rgb(107, 79, 9);">
+                Add A New Profile
+            </button>
+        </a>
+    </div>
+</section>
+{% endblock content %}
+
+
+
+

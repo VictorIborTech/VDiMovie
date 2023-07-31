@@ -1,0 +1,31 @@
+{% load static %}
+
+<nav class="flex justify-between items-center py-3 px-4 fixed w-full z-50">
+     
+    
+    <div class="w-6/12">
+        <a href="{% url 'core:home' %}">
+            <img src="{% static 'logo.png' %}" alt="logo" class="w-5/12 md:w-2/12">
+        </a>
+    </div>
+
+    <div>
+        {% if request.user.is_authenticated %}
+            <form method="POST" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <button class ="py-1 px-3 text-white md:text-lg rounded-md logout" style="background-color: goldenrod;" type="submit">
+                    LogOut
+                </button>
+            </form>
+            
+        {% else %}
+        <a href="{% url 'account_login' %}">
+            <button class ="py-1 px-5 text-white md:text-lg rounded-md signin" style="background-color: goldenrod;">
+                Sign In
+             </button>
+           </a>
+            
+        {% endif %}
+        
+    </div>
+</nav>
